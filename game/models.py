@@ -1,11 +1,11 @@
 from django.db import models
 
 class Game(models.Model):
-    name = models.CharField(max_length=50)
-    game_image = models.CharField(max_length=500)
-    status = models.BooleanField
-    stats = models.CharField(max_length=300)
-    description = models.CharField(max_length=500)
+    name = models.CharField(max_length=50, default=None)
+    game_image = models.CharField(max_length=500, default=None)
+    # status = models.BooleanField
+    stats = models.CharField(max_length=300, default=None)
+    description = models.CharField(max_length=500, default=None)
     # members = 
     # characters =
 
