@@ -1,0 +1,44 @@
+body {
+  background: linear-gradient(0deg, rgba(9,33,47,0.9) 0%, rgba(211,211,211,1) 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: black;
+  // text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5);
+  font-size: larger;
+  height: 100vh;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 10vw;
+  .game-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80vw;
+    margin-top: 20px;
+    p {
+      margin-left: 20px;
+    }
+    #gameImage {
+      width: 15vw;
+      // border: 1px solid rgb(214, 164, 75);
+    }
+  }
+  .character-display {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    width: 80vw;
+    margin-top: 20px;
+    p {
+      margin-right: 20px;
+    }
+    #characterImage {
+      width: 15vw;
+      // border: 1px solid rgb(214, 164, 75);
+    }
+  }
+}

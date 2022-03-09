@@ -8,19 +8,17 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('characters', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Game',
+            name='Character',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(default=None, max_length=50)),
-                ('game_image', models.CharField(default=None, max_length=500)),
+                ('name', models.CharField(default=None, max_length=500)),
                 ('stats', models.CharField(default=None, max_length=300)),
                 ('description', models.CharField(default=None, max_length=500)),
-                ('character', models.ManyToManyField(related_name='game', to='characters.character')),
+                ('character_image', models.CharField(default=None, max_length=500)),
             ],
         ),
     ]

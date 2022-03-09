@@ -1,0 +1,14 @@
+@import './variables';
+@import './components/home.scss';
+@import './components/siteNav.scss';
+@import './components/spinner.scss';
+@import './components/gameIndex.scss';
+@import './components/characterIndex.scss';
+@import './components/showGame.scss';
+@import './components/showCharacter.scss';
+@import './components/footer.scss';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Cardo', serif;
+}
