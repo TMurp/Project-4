@@ -36,18 +36,18 @@ const GameIndex = () => {
         }
       {gameData ?
         <>
-          <div className='game-list'>
+          <div className='list'>
             {gameData.map(game => {
               const { name, game_image, stats, description, id  } = game
               return (
-                <div key={id} className='game-div' >
+                <div key={id} className='div' >
                   
-                  <div className='game-image'>
+                  <div className='image'>
                     <Link to={`/games/${id}`}>
                       <img src={game_image} alt={name} />
                     </Link>
                   </div>
-                  <div className='game-description'>
+                  <div className='description'>
                     <Link to={`/games/${id}`}>
                       <h2>{name}</h2>
                     </Link>
@@ -62,11 +62,11 @@ const GameIndex = () => {
         </>
       :
         <>
-          <h2 className='text-center'>
+          {/* <h2 className='text-center'>
             {hasError.error ? 'Something went wrong!' 
             : 
             <Spinner />}
-          </h2>
+          </h2> */}
         </>
       }
     </div>

@@ -1,5 +1,19 @@
 .page-wrapper {
-  margin: 20px 10vw;
+  margin: 20px 20vw;
+  animation-name: fadeInDown;
+  animation-duration: 200ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  } 
   .login-prompt {
     display: flex;
     align-items: baseline;
@@ -7,13 +21,16 @@
       margin-right: 20px;
     }
     .btn {
-      &:hover{
+      background-color: $navy;
+      color: $gold;
+      border-color: $gold;
+      &:hover {
         transform: scale(105%);
       }
     }
   }
-  .game-list {
-    .game-div {
+  .list {
+    .div {
       display: flex;
       flex-direction: row;
       align-items: center;

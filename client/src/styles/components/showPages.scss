@@ -1,0 +1,60 @@
+.wrapper {
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  margin: 20px 20vw;
+  animation-name: fadeInDown;
+  animation-duration: 200ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .title {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: baseline;
+    h2 {
+      flex-grow: 2;
+    }
+    .btn {
+      max-height: 38px;
+      margin-left: 10px;
+      background-color: $navy;
+      color: $gold;
+      border-color: $gold;
+      &:hover {
+        transform: scale(105%);
+      }
+    }
+  }
+  .card-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    img {
+      width: 300px;
+      border-radius: 10px;
+    }
+    .description {
+      margin-left: 20px;
+    }
+  }
+  .card-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    // align-items: center;
+  }
+}

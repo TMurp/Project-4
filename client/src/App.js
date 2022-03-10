@@ -13,6 +13,7 @@ import ShowCharacter from './components/ShowCharacter'
 import UserIndex from './components/UserIndex'
 import ShowUser from './components/ShowUser'
 import EditProfile from './components/forms/EditProfile'
+import EditCharacter from './components/forms/EditCharacter'
 // import Footer from './components/utilities/Footer'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path='/Characters' element={<CharacterIndex />} />
           <Route path='/Characters/:id' element={<ShowCharacter />} />
           <Route path='/Createcharacter' element={<CreateCharacter />} />
+          <Route path='/Characters/:id/edit' element={<EditCharacter />} />
           <Route path='/Users' element={<UserIndex />} />
           <Route path='/Users/:id' element={<ShowUser />} />
           <Route path='/Users/:id/edit' element={<EditProfile />} />

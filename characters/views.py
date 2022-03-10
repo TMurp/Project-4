@@ -52,8 +52,9 @@ class SingleCharacterView(APIView):
     # Edit character
     def put(self, request, pk):
         character_to_update = self.get_character(pk=pk)
-        serialized_character = CharacterSerializer(character_to_update, data=request.data)
+        serialized_character = PopulatedCharacterSerializer(character_to_update, data=request.data)
         try:
+            print(serialized_character)
             serialized_character.is_valid()
             serialized_character.save()
             return Response(serialized_character.data, status=status.HTTP_202_ACCEPTED)

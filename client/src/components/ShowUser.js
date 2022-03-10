@@ -1,8 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import Spinner from './utilities/Spinner'
-import { getPayload } from '../environment/Auth'
+// import Spinner from './utilities/Spinner'
+import { getPayload, getLocalToken } from '../environment/Auth'
 
 const ShowUser = () => {
 
@@ -29,37 +29,54 @@ const ShowUser = () => {
     return user.id === payload.sub
   }
 
+  const deleteUser = async () => {
+    try {
+      await axios.delete(`/api/users/${id}/`, {
+        headers: {
+          Authorization: `Bearer ${getLocalToken()}`
+        }
+      }
+      )
+    } catch (error) {
+      console.log('delete error message', error.response.data.message)
+    }
+  }
+
   return (
     <>
       {user ?
-        <div className='user-wrapper'>
-          <h2>{user.username}</h2>
-          <div className='user-card-top'>
-            <div className='user-image'>
+        <div className='wrapper'>
+          <div className='title'>
+            <h2>{user.username}</h2>
+            {userIsOwner() && <Link className='btn-dark btn' to={`/users/${user.id}/edit`}>Edit Profile</Link>}
+            {userIsOwner() && <Link className='btn-dark btn' onClick={deleteUser} to={'/'}>Delete</Link>}
+          </div>
+          <div className='card-top'>
+            <div className='image'>
             <img src={user.profile_image} alt={user.username}/>
             </div>
-            <div className='user-description'>
+            <div className='description'>
               <p>{user.description}</p>
             </div>
           </div>
-          <div className='user-card-bottom'>
-            <div className='user-stats'>
+          <div className='card-bottom'>
+            <div className='stats'>
             <p>Stats: {user.stats}</p>
             {/* <p>{user.members}</p>
             <p>{user.user}</p> */}
             </div>
-            <div className='user-comments'>
-
+            <div className='comments'>
+              {/* <p>placeholder text</p> */}
             </div>
           </div>
-          {userIsOwner() && <Link className='btn-dark btn' to={`/users/${user.id}/edit`}>Edit Profile</Link>}
         </div>
         :
         <>
-          <h2 className="text-center">
-            {hasError.error ? 'Something went wrong!' : 'Loading...'}
-          </h2>
-          <Spinner />
+          {/* <h2 className='text-center'>
+            {hasError.error ? 'Something went wrong!' 
+            : 
+            <Spinner />}
+          </h2> */}
         </>
       }
     </>

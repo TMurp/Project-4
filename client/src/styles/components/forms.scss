@@ -1,4 +1,27 @@
 .form-page {
   max-width: 900px;
   margin: 0 auto;
+  animation-name: fadeInDown;
+  animation-duration: 200ms;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .btn {
+    background-color: $navy;
+    color: $gold;
+    border-color: $gold;
+    margin-bottom: 20px;
+    &:hover {
+      transform: scale(105%);
+    }
+  }
 }

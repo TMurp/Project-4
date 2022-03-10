@@ -4,4 +4,4 @@ from ..models import Character
 class CharacterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Character
-        fields = '__all__'
+        fields = ("id", "name", "character_image", "stats", "description", "owner")

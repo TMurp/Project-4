@@ -4,6 +4,6 @@ from character_comments.serializers.populated import PopulatedCharacterCommentSe
 from jwt_auth.serializers.common import UserSerializer
 
 class PopulatedCharacterSerializer(CharacterSerializer):
-    game = GameSerializer(many=True)
-    character_comments = PopulatedCharacterCommentSerializer(many=True)
+    # game = GameSerializer(many=True)
+    # character_comments = PopulatedCharacterCommentSerializer(many=True)
     owner = UserSerializer()

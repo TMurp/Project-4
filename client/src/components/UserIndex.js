@@ -25,18 +25,18 @@ const UserIndex = () => {
     <div className='page-wrapper'>
       {userData ?
         <>
-          <div className='user-list'>
+          <div className='list'>
             {userData.map(user => {
               const { username, profile_image, stats, description, id  } = user
               return (
-                <div key={id} className='user-div' >
+                <div key={id} className='div' >
                   
-                  <div className='user-image'>
+                  <div className='image'>
                     <Link to={`/users/${id}`}>
                       <img src={profile_image} alt={username} />
                     </Link>
                   </div>
-                  <div className='user-description'>
+                  <div className='description'>
                     <Link to={`/users/${id}`}>
                       <h2>{username}</h2>
                     </Link>
@@ -52,11 +52,11 @@ const UserIndex = () => {
         </>
       :
         <>
-          <h2 className='text-center'>
+          {/* <h2 className='text-center'>
             {hasError.error ? 'Something went wrong!' 
             : 
             <Spinner />}
-          </h2>
+          </h2> */}
         </>
       }
     </div>

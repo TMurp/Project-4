@@ -64,7 +64,6 @@ class SingleUserView(APIView):
     #Get single user
     def get(self, _request, pk):
         user = self.get_user(pk=pk)
-        print(user)
         serialized_user = UserSerializer(user)
         return Response(serialized_user.data, status=status.HTTP_200_OK)
 
@@ -85,10 +84,10 @@ class SingleUserView(APIView):
             return Response("Unprocessable Entity", status=status.HTTP_422_UNPROCESSABLE_ENTITY)
 
     #Delete a user
-    def delete(self, request, pk):
+    def delete(self, _request, pk):
         try:
-            user_to_delete = User.objects.get(pk=pk)
-            if user_to_delete.owner != request.user:
+            user_to_delete = self.get_user(pk=pk)
+            if user_to_delete != user_to_delete:
                 raise PermissionDenied(detail="Unauthorised")
             user_to_delete.delete()
             return Response(status=status.HTTP_204_NO_CONTENT)

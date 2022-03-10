@@ -36,22 +36,22 @@ const CharacterIndex = () => {
         }
       {characterData ?
         <>
-          <div className='character-list'>
+          <div className='list'>
             {characterData.map(character => {
               const { name, character_image, stats, description, id  } = character
               return (
-                <div key={id} className='character-div' >
+                <div key={id} className='div' >
                   
-                  <div className='character-image'>
+                  <div className='image'>
                     <Link to={`/characters/${id}`}>
                       <img src={character_image} alt={name} />
                     </Link>
                   </div>
-                  <div className='character-description'>
+                  <div className='description'>
                     <Link to={`/characters/${id}`}>
                       <h2>{name}</h2>
                     </Link>
-                    <h5>{stats}</h5>
+                    {/* <h5>{stats}</h5> */}
                     <p>{description}</p>
                   </div>
                 </div>
@@ -62,11 +62,11 @@ const CharacterIndex = () => {
         </>
       :
         <>
-          <h2 className='text-center'>
+          {/* <h2 className='text-center'>
             {hasError.error ? 'Something went wrong!' 
             : 
             <Spinner />}
-          </h2>
+          </h2> */}
         </>
       }
     </div>
