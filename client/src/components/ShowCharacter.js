@@ -13,9 +13,10 @@ const ShowCharacter = () => {
     const getSingleCharacter = async () => {
       try {
         const { data } = await axios.get(`/api/characters/${id}/`)
+        console.log(data)
         setCharacter(data)
-      } catch (err) {
-        setHasError({ error: true, message: err.message })
+      } catch (error) {
+        setHasError({ error: true, message: error.message })
       }
     }
     getSingleCharacter()

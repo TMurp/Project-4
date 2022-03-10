@@ -12,7 +12,7 @@ class JWTAuthentication(BasicAuthentication):
         if not header:
             return None
         if not header.startswith('Bearer'):
-            raise PermissionDenied(detial="Invalid auth token format")
+            raise PermissionDenied(detail="Invalid auth token format")
         token = header.replace('Bearer ', '')
         try:
             payload = jwt.decode(token, settings.SECRET_KEY, algorithms=['HS256'])

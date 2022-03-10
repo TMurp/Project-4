@@ -23,7 +23,12 @@ main {
       margin-left: 20px;
     }
     #gameImage {
-      width: 15vw;
+      width: 300px;
+      border-radius: 10px;
+      &:hover{
+        transform: scale(103%);
+        filter: brightness(85%);
+      }
       // border: 1px solid rgb(214, 164, 75);
     }
   }
@@ -37,8 +42,13 @@ main {
       margin-right: 20px;
     }
     #characterImage {
-      width: 15vw;
+      width: 300px;
+      border-radius: 10px;
       // border: 1px solid rgb(214, 164, 75);
+      &:hover{
+        transform: scale(101%);
+        filter: brightness(85%);
+      }
     }
   }
 }

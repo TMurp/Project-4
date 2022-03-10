@@ -21,7 +21,7 @@ const SiteNav = () => {
 
   const getUserId = () => {
     const userId = window.localStorage.getItem('the-circle-userId')
-    navigate(`/profile/${userId}`)
+    navigate(`/users/${userId}`)
   }
 
   return (

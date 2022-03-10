@@ -14,8 +14,9 @@ const ShowGame = () => {
       try {
         const { data } = await axios.get(`/api/games/${id}/`)
         setGame(data)
-      } catch (err) {
-        setHasError({ error: true, message: err.message })
+        console.log(data)
+      } catch (error) {
+        setHasError({ error: true, message: error.message })
       }
     }
     getSingleGame()
@@ -24,6 +25,7 @@ const ShowGame = () => {
   return (
     <>
       {game ?
+
         <div className='game-wrapper'>
           <h2>{game.name}</h2>
           <div className='game-card-top'>
@@ -36,10 +38,10 @@ const ShowGame = () => {
           </div>
           <div className='game-card-bottom'>
             <div className='game-stats'>
-            <p>{game.stats}</p>
-            <p>{game.owner.username}</p>
-            <p>{game.members}</p>
-            <p>{game.character}</p>
+            <p>Created by: {game.owner.username}</p>
+            <p>Game Info: {game.stats}</p>
+            {/* <p>{game.members}</p>
+            <p>{game.character}</p> */}
             </div>
             <div className='game-comments'>
 

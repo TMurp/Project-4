@@ -1,11 +1,11 @@
 .navbar {
-  border-bottom: 2px solid $gold;
+  border-bottom: 3px solid $gold;
   background-color: $navy;
   img{
     height: 70px;
     margin-right: 5px;
     animation-name: spin;
-    animation-duration: 50000ms;
+    animation-duration: 40000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     @keyframes spin {

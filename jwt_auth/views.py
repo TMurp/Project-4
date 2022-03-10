@@ -3,8 +3,10 @@ from rest_framework.views import APIView
 from django.contrib.auth import get_user_model
 from rest_framework import status
 from rest_framework.response import Response
-from rest_framework.exceptions import PermissionDenied
+from rest_framework.exceptions import NotFound, PermissionDenied
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from .serializers.common import UserSerializer
+from .serializers.populated import PopulatedUserSerializer
 from datetime import datetime, timedelta
 import jwt
 from django.conf import settings
@@ -43,3 +45,54 @@ class LoginView(APIView):
             'token': token,
             'message': f"Welcome back {user_to_login.username}"
         }, status.HTTP_202_ACCEPTED)
+
+class UserListView(APIView):
+    def get(self, _request):
+        users = User.objects.all()
+        serialized_users = UserSerializer(users, many=True)
+        return Response(serialized_users.data, status=status.HTTP_200_OK)
+
+class SingleUserView(APIView):
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+    #Find user function
+    def get_user(self, pk):
+        try:
+            return User.objects.get(pk=pk)
+        except:
+            raise NotFound(detail="User not found")
+
+    #Get single user
+    def get(self, _request, pk):
+        user = self.get_user(pk=pk)
+        print(user)
+        serialized_user = UserSerializer(user)
+        return Response(serialized_user.data, status=status.HTTP_200_OK)
+
+    #Edit a user
+    def put(self, request, pk):
+        user_to_update = self.get_user(pk=pk)
+        # user_to_update = user.objects.get(pk=pk)
+        serialized_user = UserSerializer(user_to_update, data=request.data)
+        try:
+            # if user_to_update.owner != request.user:
+            #     raise PermissionDenied(detail="Unauthorised")
+            serialized_user.is_valid()
+            serialized_user.save()
+            return Response(serialized_user.data, status=status.HTTP_202_ACCEPTED)
+        except AssertionError as e:
+            return Response({ "detail": str(e) }, status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+        except:
+            return Response("Unprocessable Entity", status=status.HTTP_422_UNPROCESSABLE_ENTITY)
+
+    #Delete a user
+    def delete(self, request, pk):
+        try:
+            user_to_delete = User.objects.get(pk=pk)
+            if user_to_delete.owner != request.user:
+                raise PermissionDenied(detail="Unauthorised")
+            user_to_delete.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except User.DoesNotExist:
+            raise NotFound(detail="User not found")
+        except:
+            return Response({"detail": "Failed to delete User"}, status=status.HTTP_401_UNAUTHORIZED)

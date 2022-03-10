@@ -10,6 +10,9 @@ import CharacterIndex from './components/CharacterIndex'
 import CreateCharacter from './components/forms/CreateCharacter'
 import ShowGame from './components/ShowGame'
 import ShowCharacter from './components/ShowCharacter'
+import UserIndex from './components/UserIndex'
+import ShowUser from './components/ShowUser'
+import EditProfile from './components/forms/EditProfile'
 // import Footer from './components/utilities/Footer'
 
 function App() {
@@ -28,6 +31,9 @@ function App() {
           <Route path='/Characters' element={<CharacterIndex />} />
           <Route path='/Characters/:id' element={<ShowCharacter />} />
           <Route path='/Createcharacter' element={<CreateCharacter />} />
+          <Route path='/Users' element={<UserIndex />} />
+          <Route path='/Users/:id' element={<ShowUser />} />
+          <Route path='/Users/:id/edit' element={<EditProfile />} />
         </Routes>
         {/* <Footer /> */}
       </BrowserRouter>

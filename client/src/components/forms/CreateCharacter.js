@@ -64,12 +64,12 @@ const CreateCharacter = () => {
           </Form.Group>
           <Form.Group className='mb-2'>
             <Form.Label htmlFor='stats'>Stats</Form.Label>
-            <Form.Control onChange={handleChange} type='text' placeholder='Stats' name='stats' defaultValue={formData.stats} />
+            <Form.Control onChange={handleChange} as="textarea" type='text' placeholder='Stats' name='stats' defaultValue={formData.stats} />
             {formErrors.stats && <Form.Text>{formErrors.stats}</Form.Text>}
           </Form.Group>
           <Form.Group className='mb-2'>
             <Form.Label htmlFor='description'>Description</Form.Label>
-            <Form.Control onChange={handleChange} type='text' placeholder='Description' name='description' defaultValue={formData.description} />
+            <Form.Control onChange={handleChange} as="textarea" type='text' placeholder='Description' name='description' defaultValue={formData.description} />
             {formErrors.description && <Form.Text>{formErrors.description}</Form.Text>}
           </Form.Group>
           <Form.Group className='text-center mt-4'>

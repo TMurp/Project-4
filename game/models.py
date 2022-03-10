@@ -17,7 +17,7 @@ class Game(models.Model):
     )
     owner = models.ForeignKey(
         "jwt_auth.User",
-        related_name = "games_owned",
+        related_name = "games",
         on_delete = models.CASCADE,
         default=None
     )
