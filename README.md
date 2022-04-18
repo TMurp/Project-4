@@ -264,11 +264,11 @@ The biggest lesson for me this project was increasing my understanding and confi
 
 Email - tommurphyse@gmail.com
 
-Social - linkedin.com/in/tom-j-murphy/
+Social - [linkedin.com/in/tom-j-murphy/](https://www.linkedin.com/in/tom-j-murphy/)
 
 Project Link - to do
 
-GitHub - github.com/TMurp
+GitHub - [github.com/TMurp](github.com/TMurp)
 
 
 
